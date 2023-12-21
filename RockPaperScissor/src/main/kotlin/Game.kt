@@ -4,6 +4,7 @@ fun main(args: Array<String>) {
     val userChoice = getUserChoice(options)
     println("Game Choice is: $gameChoice")
     println("User Choice is: $userChoice")
+    printResult(options,gameChoice, userChoice)
 }
 
 fun getUserChoice(options: Array<String>): String {
@@ -23,6 +24,15 @@ fun getUserChoice(options: Array<String>): String {
     return userChoice
 }
 
+fun printResult(options:Array<String>, gameChoice: String, userChoice: String) {
+    if (gameChoice == userChoice) println("Tie!")
+    else if ((userChoice == options[0] && gameChoice == options[2]) ||
+        (userChoice == options[1] && gameChoice == options[0]) ||
+        (userChoice == options[2] && gameChoice == options[1]))
+        println("You Win!")
+    else print("You Lose!")
+}
 fun getGameChoice(options: Array<String>): String {
     return options[(Math.random()*options.size).toInt()]
 }
+
