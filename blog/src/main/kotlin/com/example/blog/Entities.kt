@@ -13,7 +13,7 @@ class Article (
     var headline: String,
     var content: String,
     @ManyToOne var author: User,
-    var str: String = title,
+    var slug: String = title,
     var addedAt: LocalDateTime = LocalDateTime.now(),
     @Id @GeneratedValue var id: Long? = null)
 
