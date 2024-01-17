@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.9.21"
 	kotlin("plugin.spring") version "1.9.21"
 	kotlin("plugin.jpa") version "1.9.21"
+	kotlin("plugin.allopen") version "1.8.0"
 }
 
 group = "com.example"
@@ -36,7 +37,11 @@ tasks.withType<KotlinCompile> {
 		jvmTarget = "17"
 	}
 }
-
+allOpen{
+	annotation("jakarta.persistence.Entity")
+	annotation("jakarta.persistence.Embeddable")
+	annotation("jakarta.persistence.MappedSuperClass")
+}
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
