@@ -30,7 +30,7 @@ fun printResult(options:Array<String>, gameChoice: String, userChoice: String) {
         (userChoice == options[1] && gameChoice == options[0]) ||
         (userChoice == options[2] && gameChoice == options[1]))
         println("You Win!")
-    else print("You Lose!")
+    else println("You Lose!")
 }
 fun getGameChoice(options: Array<String>): String {
     return options[(Math.random()*options.size).toInt()]
