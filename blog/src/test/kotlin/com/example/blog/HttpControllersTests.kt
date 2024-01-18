@@ -31,5 +31,19 @@ class HttpControllersTests(@Autowired val mockMvc: MockMvc) {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("\$.[0].login").value(johnDoe.login))
             .andExpect(jsonPath("\$.[1].login").value(johnDoe.login))
+            .andExpect(jsonPath("\$.[0].slug").value(loremArticle))
+            .andExpect(jsonPath("\$.[1].slug").value(ipsumArticle))
+    }
+
+    fun `List users`() {
+        val janeDoe = User("JaneDoe", "Jane", "Doe")
+        val johnDoe = User("JohnDoe", "John", "Doe")
+
+        every { userRepository.findAll() } returns listOf(johnDoe, janeDoe)
+        mockMvc.perform(get("/api/user/").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("\$.[0].login").value(johnDoe))
+            .andExpect(jsonPath("\$.[1].login").value(janeDoe))
     }
 }
