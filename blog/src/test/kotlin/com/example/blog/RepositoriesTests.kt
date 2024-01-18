@@ -11,7 +11,7 @@ import org.springframework.data.repository.findByIdOrNull
 class RepositoriesTests @Autowired constructor(
     val entityManager: TestEntityManager,
     val userRepository: UserRepository,
-    val articleRepositories: ArticleRepositories) {
+    val articleRepository: ArticleRepository) {
 
     @Test
     fun `When findByIdOrNull then return Article`(){
@@ -20,7 +20,7 @@ class RepositoriesTests @Autowired constructor(
         val article = Article("Lorem", "Lorem", "dolor sit amet", johnDoe)
         entityManager.persist(article)
         entityManager.flush()
-        val found = articleRepositories.findByIdOrNull(article.id!!)
+        val found = articleRepository.findByIdOrNull(article.id!!)
         assertThat(found).isEqualTo(article)
     }
 

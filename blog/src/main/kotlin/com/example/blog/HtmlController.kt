@@ -13,7 +13,7 @@ class HtmlController (private val repository: ArticleRepository) {
     @GetMapping("/")
     fun blog(model: Model): String{
         model["title"] = "Blog"
-        model["articles"] = repository.findAllByOrderByAddedDesc().map { it.render() }
+        model["articles"] = repository.findAllByOrderByAddedAtDesc().map { it.render() }
         return "blog"
     }
 @GetMapping("/article/{slug}")
