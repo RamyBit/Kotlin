@@ -1,4 +1,15 @@
-data class Recipes(val title: String, val isVegetarian: Boolean)
+
+data class Recipes(val title: String,
+                   val mainIngredient: String,
+                   val isVegetarian: Boolean = false,
+                   val difficulty: String = "Easy")
+
+// This is an example of a class with a secondary constructor
+class Mushroom(val size: Int, val isMagic: Boolean){
+    constructor(isMagic_param: Boolean) : this(0,isMagic_param){
+        println("This secondary constructor has been called!")
+    }
+}
 
 fun main(args: Array<String>){
     val r1 = Recipes("Gulasch", false)
