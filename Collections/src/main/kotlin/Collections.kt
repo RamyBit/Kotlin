@@ -1,5 +1,7 @@
+import kotlin.time.measureTimedValue
+
 fun main(args: Array<String>){
-    val mShoppingList = mutableListOf("Tea", "Eggs", "Milk")
+    var mShoppingList = mutableListOf("Tea", "Eggs", "Milk")
     println("mShoppingList original: $mShoppingList")
     val extraShopping = listOf("Cookies", "Sugar", "Eggs")
     mShoppingList.addAll(extraShopping)
@@ -13,4 +15,12 @@ fun main(args: Array<String>){
     println("mShoppingList reversed: $mShoppingList")
     mShoppingList.shuffle()
     println("mShoppingList shuffled: $mShoppingList")
+
+    val mShoppingSet = mShoppingList.toMutableSet()
+    println("mShoppingSet: $mShoppingSet")
+    val moreShopping = setOf("Chives", "Banana", "Milk")
+    mShoppingSet.addAll(moreShopping)
+    println("mShoppingSet items added: $mShoppingSet")
+    mShoppingList = mShoppingSet.toMutableList()
+    println("mShoppingList new version: $mShoppingList")
 }
